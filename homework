@@ -1,0 +1,53 @@
+1.#задание 
+ls /etc
+ls /proc
+ls ~
+
+cat /etc/hosts
+cat /etc/group
+
+2.#задание
+cat > mycat
+cat > mydog
+cat mycat mydog > mypets
+
+3.#задание
+touch file1 file2 file3
+mkdir test
+mv file1 file2 file3 > test/
+rm -r test mycat mydog mypets
+
+4.#задание
+ls -ld .* | grep -v '^d' | wc -l
+
+5.#задание
+cat /etc/* 2> errcat
+
+
+6.#задание
+ping ya.ru &
+ps au | grep ping
+kill -9 23728
+
+or
+
+pkill ping
+
+
+7.#задание
+lsof -u | grep 1000 | less
+
+8.#задание
+mkdir -p {2015..2010}/{01..12}
+
+9.#задание
+for year in {2015..2020}
+> do
+>  for mounth in {01..12}
+>   do
+>    echo «$year$mounth» > ~/photo/$year/$mounth/$year$mounth.txt
+>   done
+> done 
+
+
+10.#задание
