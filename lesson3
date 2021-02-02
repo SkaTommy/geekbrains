@@ -1,0 +1,60 @@
+1.#задание
+touch file1
+echo 'my dog is very nice' > file1
+cp file1 > file2
+ln -s file1 file3
+ln file1 file4
+ls -li
+rm file1
+ls -la
+cat file2
+cat file3
+cat file4
+
+2.#задание
+mv file4 filex
+ln -s filex symlink
+mv symlink repo
+ls -la repo
+
+3.#задание
+touch top down
+chmod 664 top
+chmod 600 down
+
+
+4.#задание
+sudo adduser tommy
+
+or
+
+sudo useradd -m -G jim -s /bin/bash jim
+sudo passwd
+sudo usermod -aG sudo tommy
+
+5.#задание
+sudo groupadd developer
+mkdir developer
+sudo chgr developer ~/sts/geekbrains/developer
+su tommy
+cd /home/sts/geekbrains/developer
+touch file1
+
+
+#тут я меняю эффективную группу с tommy на developer Была проблема с созданием файла, возможно нужно было перелогиниться юзером
+newgrp developer
+touch file1
+
+
+6.#задание
+mkdir project
+chmod 766
+
+
+7.#задание
+mkdir developer/devops
+chmod 733 /developer/devops
+  
+
+
+
