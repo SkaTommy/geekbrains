@@ -1,0 +1,39 @@
+
+1.#assegnment
+
+#!/bin/bash
+FILE=test
+ALFABET=$(sed -e "/^$/d" $FILE | tr [a-z] [A-Z])
+echo $ALFABET
+
+2.#assegmen
+#!/bin/bash
+LOG=/var/log/auth.log
+tail -f  $LOG | while read LINE
+do
+ echo $LINE | grep -i "failure"
+done
+
+
+3.#assegnment
+mkdir -p photo/{2010..2017}/{01..12}
+for year in {2010..2017}
+  do
+   for mounth in {01..12}
+    do
+     for number in {001..003}
+      do
+       echo "file ${number}" > ~/photo/$year/$mounth/file$number
+      done
+    done
+  done
+
+4.#assegnment
+du -sh /home/sts
+
+5.#assegnment
+0 23 0 0 0 /home/sts/backup_script
+
+#!/bin/bash
+du -sh /home/sts >> ~/backup.log 2>/dev/null
+
