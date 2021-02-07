@@ -1,0 +1,91 @@
+1.#assignment
+ip a
+
+2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:09:2e:34 brd ff:ff:ff:ff:ff:ff
+    altname enp2s1
+    inet 192.168.0.35/24 brd 192.168.0.255 scope global noprefixroute ens33
+       valid_lft forever preferred_lft forever
+    inet6 fd01::54ab:4645:8cb2:8f7f/64 scope global temporary dynamic
+       valid_lft 253sec preferred_lft 253sec
+    inet6 fd01::d3e8:2522:112a:a299/64 scope global dynamic mngtmpaddr noprefixroute
+       valid_lft 253sec preferred_lft 253sec
+    inet6 fe80::211c:c0f5:2978:a6ca/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+
+
+sudo vim /etc/netplan/01-network-manager-all.yaml
+
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets: 
+    ens33:
+      dhcp: no
+      address:
+        - 192.168.0.35/24
+      gateway4: 192.168.0.1
+      nameserver:
+        address: [8.8.8.8 , 8.8.4.4 ]
+
+sudo netplan --debug generate
+sudo netplan generate
+sudo netplan apply
+
+
+
+
+2.#assignment
+
+sudo vim /etc/netplan/01-network-manager-all.yaml
+
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+          ens33:
+                  dhcp: true
+
+
+
+sudo netplan generate
+sudo netplan apply
+
+3.#assignment
+
+sudo vim /etc/netplan/01-network-manager-all.yaml
+
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    ens33:
+      dhcp: no
+      address:
+         192.168.0.35/24
+      gateway4: 192.168.0.1
+      nameserver:
+        address: [1.1.1.1 ]
+
+sudo netplan generate
+sudo netplan apply
+
+4.#assignment 
+
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+sudo iptables -A INPUT -j DROP
+
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 8080
+sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+
+5.#assignment
+
+sudo iptables -A INPUT -p tcp -s 192.168.0.0/24 --dport 22 -j ACCEPT
+
+
